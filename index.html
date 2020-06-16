@@ -1,0 +1,715 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>视频网站</title>
+   <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+	<style type="text/css">
+        li{list-style:none;}
+        a{text-decoration: none;}
+		body{margin:0;
+		    padding:0; 
+            height:1000px;
+            overflow-y: scroll;
+		}
+		#dhl li{
+			display:inline-block;
+			width:50px;
+		}	
+		#dhl li a{
+			display:inline-block;
+		}	
+		#dhl li ul{
+			position: absolute;
+			display: none ;
+		}
+		 #dhl li:hover ul{
+                display:block; 
+            }
+		#dhl li ui li{
+			display: block;}
+		
+		#dkk{
+			position:relative;
+		}
+		#dhl,#shou,#tab {
+			position: absolute;
+		}
+		#dhl{
+			top:10px;
+			right: 30px;	
+		}
+        #shou{
+            top:0px;
+            left: 30px;
+        }
+        #tupian{
+            position: relative;
+        }
+        
+        .imglist li{
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        .tab li.cur{
+           background: rgba(255,255,255,.6);
+             font-size: 20px;
+        }
+        
+        .tab li{
+            color: aliceblue;
+            background: rgba(0,0,0,.4);
+        }
+         .tab a{
+            color: aliceblue;
+            background: rgba(0,0,0,.4);
+        }
+        .tab {
+            position: absolute;
+            top:100px;
+            right: 30px;
+           
+            font-size: 15px;
+           
+          text-align: -webkit-match-parent;
+        }
+        .m-homenavigation{
+            width: 80%;
+            margin: 0 auto;
+        }
+        homenavigation .homenavleft {
+    float: none;
+    margin-bottom: 25px;
+    text-align: center;
+}
+        .homenavleft a {
+    display: inline-block;
+    height: 45px;
+    padding: 0 25px;
+    border-radius: 24px;
+    margin-right: 30px;
+    color: #222;
+    background: #fff;
+    -webkit-box-shadow: 0 0 10px rgba(0,0,0,.08);
+    box-shadow: 0 0 10px rgba(0,0,0,.08);
+    font-weight: 700;
+    font-size: 16px;
+    text-align: center;  
+    display:inline-block;
+    width: 90px; 
+    margin-right: 35px;
+    margin-bottom: 10px;
+            cursor: pointer;
+}
+        .homenavleft{ 
+            float: none;
+            margin-bottom: 25px;
+            text-align: center;
+            position: absolute;
+            top:400px;
+        }
+        .homenavleft img{
+     width: 20px;
+    height: 20px;
+        }
+        .homenavright{
+            float: none;
+            margin-bottom: 25px;
+            text-align: center;
+            position: absolute;
+            top:500px;  
+        } 
+        .homenavright a {
+    display: inline-block;
+    width: 88px;
+    height: 45px;
+    color: #222;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 45px;
+             text-align: center;
+}
+        #xf{
+             position:fixed; 
+             left:0px;
+             top:400px; 
+        }
+          #rd{
+             position:fixed; 
+             right:0px;
+             top:400px; 
+        }
+        #khd{
+           border-radius: 25px;
+        }
+      #dl{
+            display: none;
+            font-family: 微软雅黑;
+            position: fixed;
+            background-color: white;
+            top: 20%;
+            left: 30%;
+            width: 500px;
+            height: 400px;
+            border-radius: 1em;
+            padding-left:20px;
+            z-index: 999;
+         float: left;}
+         #zc{
+            display: none;
+            font-family: 微软雅黑;
+            position: fixed;
+            background-color: white;
+            top: 20%;
+            left: 30%;
+            width: 500px;
+            height: 400px;
+            border-radius: 1em;
+            padding-left:20px;
+            z-index: 999;
+         float: left;}
+        .signclose {
+    cursor: pointer;
+    float: right;
+    overflow: hidden;
+    text-align: center;
+    position: relative;
+    height: 35px;
+    width: 35px;
+    margin-top: 10px;
+    margin-right: 10px;
+        }
+       .signinput {   
+     
+   width: calc(278px - 15px*2);
+    line-height: 14px;
+    height: 16px;
+    padding: 12px 15px;
+    background-color: #fafafa;
+    border: 1px solid #e0e0e0;
+    border-radius: 3px;
+}
+.m-dialog-login .m-content .row-title {
+    float: left;
+    display: inline-block;
+    *display: inline;
+    *zoom: 1;
+    width: 57px;
+    height: 40px;
+    font-size: 14px;
+    line-height: 40px;
+    text-align: right;
+    margin-right: 13px;
+    margin-bottom: 15px;
+}
+       #dl .submit{ 
+            text-align: center;
+    width: auto;
+    color: #fff;
+    font-size: 14px;
+    line-height: 38px;
+    height: 38px;
+           width: 250px;
+    border-radius: 3px;
+    background-color: #f06000;
+}
+        .ssk{
+            position: absolute;
+            top: 10%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+        }
+        .ssk input[type="text"]{
+            background: #fff;
+            width: 140px;
+            height: 35px;
+            outline: none;
+            padding: 0 25px;
+            border-radius: 25px 0 0 25px;
+        }
+        .ssk input[type="submit"]{
+            position: relative;
+            left: -5px;
+            background:#F44F0B;
+            width: 80px;
+            height:35px;
+            outline: none;
+            border: none;
+            cursor: pointer;
+            border-radius: 0 25px 25px 0;
+            color: #fff;
+        }
+        .title{
+            display: block;
+    font-size: 1.5em;
+    margin-block-start: 0.83em;
+    margin-block-end: 0.83em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+            position: absolute;
+            top:550px;
+        }  
+        .d{
+            position: absolute;
+            top:600px;
+        }
+        .s{
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+            padding: 0 10px;
+            display:inline-block;
+            position: relative;
+            height: 350px; 
+            width: 300px;
+            border-radius: 4px;
+           zoom: 1;
+         overflow: hidden;
+        }
+        .p{
+            height: 15px;
+            padding-top: 10px;   
+        }
+        .t{ width: 20px;
+            border-radius:10px;
+                background-size: cover
+            }
+        .h img{
+            position: absolute;
+            top:550px;
+           left: 1200px;
+            display:inline-block;
+            position: relative;
+        }
+        #level{
+            position: absolute;
+            top: 900px;
+        }
+        #end{
+            top: 910px;
+    position: absolute;
+           right: 40%;
+        }
+        #end li{display:inline-block;}
+         #end a{display:inline-block;}
+        #e{
+            top: 950px;
+    position: absolute;
+              right: 40%;
+            text-align: center;
+          }
+        .k{
+            width: 40px;
+            height: 190px;
+            margin: 400px 50px 100px 0;
+            float: right;
+          
+        }
+       
+        .k  ul li{
+            width: 40px;
+            height: 40px;
+            background-color:#D6D6D6;
+            margin-bottom: 10px;
+            border-radius: 25px 0 0 25px;
+          background-image: url( "img/jifen-ico.png")
+        }
+        .ljf{background-position: 12px -30px;}
+        .khd{background-position: 15px -592px;
+       }
+         .i{
+            width: 40px;
+            height: 190px;
+            margin: 500px -40px 100px 0;
+            float: right;
+         
+        }
+        .i  ul li{
+            width: 40px;
+            height: 40px;
+            background-color: #D6D6D6;
+            margin-bottom: 10px;
+            border-radius: 25px 0 0 25px;
+            background-image:url("img/icon-1.png")
+        }
+        .fk{background-position: 12px -50px;
+       background-repeat:no-repeat;}
+        .db{background-position: 12px -105px;
+        background-repeat:no-repeat;
+        }
+        .i li a{color: #D6D6D6; }
+        
+	</style>
+</head>
+<body>
+<div id="dkk">
+<div id="tupian">
+     <ul class="imglist">
+        <li style="z-index:1;">
+            <img  src="img/1.jpg" alt="1" width="100%" height="100%" ></li>  
+        <li><img  src="img/2.jpg" alt="2"  width="100%" height="100%"> </li>
+		<li><img  src="img/3.jpg" alt="3"  width="100%" height="100%"> </li> 
+        <li><img  src="img/4.jpg" alt="4"  width="100%" height="100%"> </li>
+		<li><img  src="img/5.jpg" alt="5" width="100%" height="100%" ></li> 
+		<li><img  src="img/6.jpg" alt="6" width="100%" height="100%" ></li> 
+		<li><img  src="img/7.jpg" alt="7" width="100%" height="100%" ></li> 
+		<li><img  src="img/8.jpg" alt="8" width="100%" height="100%" ></li> 
+		<li><img  src="img/9.jpg" alt="9" width="100%" height="100%" ></li> 
+		<li><img  src="img/10.jpg" alt="10" width="100%" height="100%" ></li>
+    </ul></div>
+   
+<ul id="dhl" style="z-index:111;" >
+<li><a href="/html/"><img src="20200405011530717.png"/></a> 
+<ul>
+		<li>开通会员</li>
+	</ul>
+</li>
+<li><a href="/css/"><img src="饭团(1).png" /></a>
+	<ul>
+		<li>饭团</li>
+	</ul>
+</li>
+<li><a href="/js/"><img src="信封.png"/></a>
+	<ul>
+		<li>消息</li>
+	</ul>
+</li>
+<li><a href="/jquery/"><img src="时间 钟表.png" /></a>
+	<ul>
+		<li>看过</li>
+	</ul>
+</li>
+<li><a href="/jquery/"><img src="电视.png" /></a>
+	<ul>
+		<li>客户端</li>
+	</ul>
+</li>		
+    <li><a href="javascript:void(0);" ><img src="img/login-1s.jpg" id="khd" onclick="start()" /></a> 
+	<ul>
+		<li>个人信息</li>
+	</ul>
+</li>		
+</ul>
+    <div id="shou">
+   <li><img src="芒果TV-01 (1).png" width="100" height="100" /></li> 
+    </div>
+    <div  class="tab" style="z-index:111;" >
+       <li class="cur"><a href="javascript:void(0);">向往的生活4</a></li>
+       <li> <a href="javascript:void(0);">我家那闺女</a></li>
+       <li> <a href="javascript:void(0);">天醒之路</a></li>
+        <li><a href="javascript:void(0);">我们的乐队</a></li>
+        <li><a href="javascript:void(0);">愠色过浓</a></li>
+        <li><a href="javascript:void(0);">朋友请听好</a></li>
+        <li><a href="javascript:void(0);">楼下女友</a></li>
+        <li><a href="javascript:void(0);">婚前21天</a></li>
+        <li><a href="javascript:void(0);">三千鸦杀</a></li>
+        <li><a href="javascript:void(0);">疯狂麦吉</a></li>
+        
+	</div>
+    </div>
+    <script type="text/javascript">    
+function changeImg(a){//a代表图片索引的数字
+  $('.imglist li').eq(a).fadeIn().siblings().fadeOut(); 
+  $('.tab li').eq(a).addClass('cur').siblings().removeClass('cur');
+}
+            //自动播放
+            var step=0; 
+             changeImg(step);
+    var timer = null;
+    function autoPlay(){
+         timer = setInterval(function(){
+             step++; 
+         if(step==10){
+             step=0;
+         }
+             changeImg(step);
+            },2000);
+    }
+    autoPlay();
+    //鼠标移入切换索引
+    $('.tab li').mouseover(
+    function(){
+        clearInterval(timer);
+        var that = $(this);
+        step = that.index();
+        changeImg(step);
+        autoPlay();
+    }
+    );     
+        
+      //鼠标移入轮播暂停
+         $('.tab li').mouseover(
+    function(){
+        clearInterval(timer);
+        var that = $(this);
+        step = that.index();
+    }
+    );
+        //鼠标移出继续播放
+          $('.tab li').mouseout(
+    function(){
+        var that = $(this);
+        step = that.index();
+         changeImg(step);
+        autoPlay();
+    }
+    );  
+        
+        //鼠标移入轮播暂停
+         $('.imglist li').mouseover(
+    function(){
+        clearInterval(timer);
+    } ).mouseout(
+    function(){
+        autoPlay();
+    });
+           function closed()
+{
+var aaa=document.getElementById("xf");
+aaa.style.display="none"
+}
+    
+function start() {
+document.getElementById('dl').style.display="block"
+}
+      function signclose() {
+ document.getElementById('dl').style.display="none"
+ document.getElementById('zc').style.display="none"
+         
+}  
+   function ks() {
+       
+    document.getElementById('zc').style.display="block"
+     document.getElementById('dl').style.display="none"  
+   }
+ function fh() {
+       
+    document.getElementById('dl').style.display="block"
+     document.getElementById('zc').style.display="none"  
+   }
+ function right() {
+ document.getElementById('second').style.display="block"
+ document.getElementById('first').style.display="none"
+ document.getElementById('r').style.display="none" 
+ document.getElementById('l').style.display="block" 
+}  
+       function left() {
+ document.getElementById('second').style.display="none"
+ document.getElementById('first').style.display="block"
+  document.getElementById('l').style.display="none"
+            document.getElementById('r').style.display="block" 
+}   
+        $(document).ready(function(){
+            $(".i").fadeOut();
+            $(window).scroll(function(){
+                if($(window).scrollTop()>300){
+                    $(".i").fadeIn();
+                }else{
+                    $(".i").fadeOut();
+                }
+            });
+        });
+	</script>
+    <div class="m-homenavigation">
+    <div class="homenavleft">
+        <a title="综艺" href="" target="_blank" class="item">
+        <img src="20200405011247174.png">
+        <span>综艺</span>
+        </a>
+        <a title="电视剧" href="" target="_blank"class="item">
+            <img src="20200405011330103.png">
+            <span>电视剧</span> 
+        </a>
+        <a title="电影" href=""  target="_blank"class="item">
+        <img src="20200405011425987.png">
+        <span>电影</span>
+        </a>
+        <a title="动漫" href=""  target="_blank"class="item">
+        <img src="20200405011454326.png">
+        <span>动漫</span></a>
+        <a title="少儿" href=""  target="_blank"class="item">
+        <img src="20200405011515643.png">
+        <span>少儿</span></a>
+        <a title="vip会员" href=""  target="_blank"class="item">
+        <img src="20200405011530717.png">
+        <span>VIP会员</span>
+        </a>
+    </div>
+  
+    <div class="homenavright">
+        <a title="新闻" href="" target="">
+        <span>新闻</span></a>
+         <a title="纪录片" href="" target="">
+        <span>纪录片</span></a>
+         <a title="音乐" href="" target="">
+        <span>音乐</span></a>
+         <a title="直播" href="" target="">
+        <span>直播</span></a>
+         <a title="娱乐" href="" target="">
+        <span>娱乐</span></a>
+         <a title="生活" href="" target="">
+        <span>生活</span></a>
+         <a title="教育" href="" target="">
+        <span>教育</span></a>
+         <a title="游戏" href="" target="">
+        <span>游戏</span></a> <a title="时尚" href="" target="">
+        <span>时尚</span></a> <a title="牛奶盒子" href="" target="">
+        <span>牛奶盒子</span></a> <a title="游戏中心" href="" target="">
+        <span>游戏中心</span></a>
+    </div>
+ </div>
+    <div id="xf" style="display: ;z-index:111;">
+    <img src="img/20190927100645738.jpg">
+     <img style="position:fixed; top:400px;  width:20px; height:20px;" src="关  闭.png" onclick="closed();"/>      
+    </div>
+    <div class="k">
+        <ul>
+            <li class="ljf"></li>
+            <li class="khd"></li>
+        </ul>
+    
+    </div>
+     <div class="i">
+        <ul>
+            <li class="fk"></li>
+            <li class="db"><a href="#">返回顶部</a></li>
+           
+        </ul>
+    
+    </div>
+    <div id="dl">
+        <div class="signclose">
+        <img src="关  闭.png" width="25px" height="25px" onclick="signclose()">
+    </div> 
+     账号登录<br>
+   <p>账号<input  class="signinput" type="text" name="账号" value="请输入手机号码和邮箱"> </p>
+   <p>密码<input class="signinput" type="text" name="密码" value="请输入密码"></p>
+   <p>验证码<input class="signinput" type="text" name="验证码" value="验证码"></p>
+   <input type="radio" value="记住我">记住我&nbsp;&nbsp;&nbsp; &nbsp;  
+        <div class="change" style="color: #4d4d4d">
+        <p><a href="#" style="text-decoration: none;color: #43A047" onclick="ks()" >注册</a></p>
+    </div> 
+  <p><input class="submit" type="submit" value="登录"></p>  
+    </div>
+    
+     <div id="zc">
+        <div class="signclose">
+        <img src="关  闭.png" width="25px" height="25px" onclick="signclose()">
+         </div>
+     注册<br>       
+   <p>手机<input class="signinput" type="text" name="手机" value="请输入手机号码" ></p>
+   <p>密码<input class="signinput" type="text" name="密码" value="请输入6~20位密码"></p>   
+   <p>验证码<input class="signinput" type="text" name="验证码" value="验证码"></p>
+     <p>校验码<input class="signinput" type="text" name="校验码" value="请输入校验码码"></p>      
+  <p><input type="radio" value="记住我">我已阅读xx协议及隐私政策</p>
+  <p><input class="submit" type="submit" value="注册">   </p>
+          <div class="change" style="color: #4d4d4d">
+            <p><a href="#" style="text-decoration: none;color: #43A047" onclick="fh()" >返回账号登录</a></p>
+      </div>
+    </div>
+<div class="ssk" style="z-index: 1111">
+         <form>
+            <input type="text" name="" placeholder="向往的生活.....">
+            <input type="submit" name="" value="全网搜">
+         </form>
+</div>
+   <h2 class="title">
+    <span>今日热门</span>
+    </h2> 
+    <a class="leftBen" href="javascript:void(0);"></a>
+     <a class="rightBen" href="javascript:void(0);"></a>
+   <div class="d">
+       <li style="display: " id="first">
+       <div  class="s">
+           <div class="t">
+               <img src="img/@(0A[DIU59[_TW3P9QA`3)X.png">
+           </div>
+           <div class="p">
+               <a href="" target="_blank">快本超时营业中2</a>
+               <P>小橘排舞花絮曝光王子异被表白</P>
+           </div>
+       </div>
+           <div class="s">
+           <div class="t">
+               <img src="img/@@~FS_OSOI@CTEIN(3E$DDG.png">
+           </div>
+           <div class="p">
+               <a href="" target="_blank">向往的生活4.plus版</a>
+               <P>沙溢下厨被熏出眼泪</P>
+           </div>
+       </div>
+            <div class="s">
+           <div class="t">
+               <img src="img/[]N$(H}DV8$I~5B}]7RF(SX.png">
+           </div>
+           <div class="p">
+               <a href="" target="_blank">天醒之路</a>
+               <P>第36集</P>
+           </div>
+       </div>
+            <div class="s" >
+           <div>
+               <img src="img/{HPVM{CUZPGL]32_~$`D04W.png">
+           </div>
+           <div class="p">
+               <a href="" target="_blank">甜蜜的任务</a>
+               <P>陈学冬吐槽杨幂</P>
+           </div>
+       </div></li>
+       <li style="display: none" id="second">
+            <div  class="s">
+           <div class="t">
+               <img src="img/UKTK~9P(PT0M@GPYW7SWQYN.png">
+           </div>
+           <div class="p">
+               <a href="" target="_blank">密室大逃脱2</a>
+               <P>杨幂邓伦等加盟</P>
+           </div>
+       </div>
+            <div class="s">
+           <div class="t" >
+               <img src="img/8OM%6UUN)~2)W33N6}[3GYY.png">
+           </div>
+           <div class="p">
+               <a href="" target="_blank">《中餐厅4》将在国内录制</a>
+               <P>黄晓明杨紫王俊凯回归呼声高</P>
+           </div>
+       </div>
+     <div class="s">
+           <div class="t">
+               <img src="img/D%$V]{M)UY0[W)(ZOK00$FK.png">
+           </div>
+           <div class="p">
+               <a href="" target="_blank">朋友请吃好</a>
+               <P>千玺狂吃美味肥肠</P>
+           </div>
+       </div>
+            <div class="s">
+           <div class="t">
+               <img src="img/13`{Y)LYSZRC`JW6%)A%W0N.png">
+           </div>
+           <div class="p">
+               <a href="" target="_blank">天天兄弟营业中</a>
+               <P>王一博被隔空投喂直呼太香</P>
+           </div>
+       </div>
+           </li>
+    </div> 
+    <div class="h">
+        <img src="img/左右.png" onclick="left()" id="l" style="display: none">
+        <img src="img/左右 (1).png" onclick="right()" id="r">
+    </div>
+    <div id="level">
+  <HR align=center width=1250 color=#987cb9 SIZE=1>
+    </div>
+  <div id="end">
+        <ul><li></li>
+            <li><a href="">公司介绍</a>|</li><li><a href="">关于我们</a>|</li><li><a href="">公司动态</a>|</li><li><a href="">广告动态</a>|</li><li><a href="">广告服务</a>|</li><li><a href="">招聘信息</a>|</li>
+           <li><a href="">法律信息</a></li>
+      </ul></div>
+        <div id="e"><li><ul>版权归xxx公司所有</ul><ul>联系电话：66666666 &nbsp&nbsp&nbsp举报电话:88888888&nbsp&nbsp&nbsp举报邮箱:12345678@163.com</ul></Li></div>
+        <div id="e"><li><ul>版权归xxx公司所有</ul><ul>联系电话：66666666 &nbsp&nbsp&nbsp举报电话:88888888&nbsp&nbsp&nbsp举报邮箱:12345678@163.com</ul></Li></div>
+        
+        </body>
+</html>
